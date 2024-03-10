@@ -27,6 +27,7 @@ conda create -n efficientvit python=3.10
 conda activate efficientvit
 conda install -c conda-forge mpi4py openmpi
 pip install -r requirements.txt
+pip install -e .
 ```
 
 ## EfficientViT Applications
