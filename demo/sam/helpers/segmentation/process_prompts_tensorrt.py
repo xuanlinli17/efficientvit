@@ -55,7 +55,12 @@ def segment_using_points_tensorrt(prompt_dict, model_name):
 
     masks = masks.cpu().numpy()
 
-    return draw_point_masks(raw_image, masks, original_points)
+    masks_union = np.sum(masks[0], axis=0) > 0
+    ret_img = raw_image.copy()
+    ret_img[~masks_union] = 0
+    return ret_img
+
+    # return draw_point_masks(raw_image, masks, original_points)
 
 
 def segment_using_boxes_tensorrt(prompt_dict, model_name):
@@ -77,7 +82,12 @@ def segment_using_boxes_tensorrt(prompt_dict, model_name):
 
     masks = masks.cpu().numpy()
 
-    return draw_box_masks(raw_image, masks, original_boxes)
+    masks_union = np.sum(masks[0], axis=0) > 0
+    ret_img = raw_image.copy()
+    ret_img[~masks_union] = 0
+    return ret_img
+
+    # return draw_box_masks(raw_image, masks, original_boxes)
 
 
 def segment_using_points_and_boxes_tensorrt(prompt_dict, model_name):
@@ -113,7 +123,12 @@ def segment_using_points_and_boxes_tensorrt(prompt_dict, model_name):
 
     masks = masks.cpu().numpy()
 
-    return draw_point_and_box_masks(raw_image, masks, original_points, original_boxes)
+    masks_union = np.sum(masks[0], axis=0) > 0
+    ret_img = raw_image.copy()
+    ret_img[~masks_union] = 0
+    return ret_img
+
+    # return draw_point_and_box_masks(raw_image, masks, original_points, original_boxes)
 
 
 def segment_full_img_tensorrt(

@@ -59,7 +59,7 @@ def segment_using_points_pytorch(prompt_dict, model_name):
 
     masks_union = np.sum(masks[0], axis=0) > 0
     ret_img = raw_image.copy()
-    ret_img[~masks_union] = 255
+    ret_img[~masks_union] = 0
     return ret_img
 
     # return draw_point_masks(raw_image, masks, points)
@@ -83,7 +83,7 @@ def segment_using_boxes_pytorch(prompt_dict, model_name):
 
     masks_union = np.sum(masks[0], axis=0) > 0
     ret_img = raw_image.copy()
-    ret_img[~masks_union] = 255
+    ret_img[~masks_union] = 0
     return ret_img
 
     # return draw_box_masks(raw_image, masks, boxes)
@@ -117,7 +117,7 @@ def segment_using_points_and_boxes_pytorch(prompt_dict, model_name):
 
     masks_union = np.sum(masks[0], axis=0) > 0
     ret_img = raw_image.copy()
-    ret_img[~masks_union] = 255
+    ret_img[~masks_union] = 0
     return ret_img
 
     # return draw_point_and_box_masks(raw_image, masks, points, boxes)
