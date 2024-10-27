@@ -81,7 +81,7 @@ def preprocess(x, img_size, device):
     pixel_mean = [123.675 / 255, 116.28 / 255, 103.53 / 255]
     pixel_std = [58.395 / 255, 57.12 / 255, 57.375 / 255]
 
-    x = torch.tensor(x).to(device)
+    x = torch.tensor(x, device=device)
     resize_transform = SamResize(img_size)
     x = resize_transform(x).float() / 255
     x = transforms.Normalize(mean=pixel_mean, std=pixel_std)(x)
